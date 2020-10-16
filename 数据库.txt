@@ -1,0 +1,11 @@
+CREATE TABLE`history`(
+`ds` datetime NOT NULL COMMENT '日期',
+`confirm` int(11) DEFAULT NULL COMMENT '累计确诊',
+`suspect` int(11) DEFAULT NULL COMMENT '剩余疑似',
+`heal` int(11) DEFAULT NULL COMMENT '累计治愈',
+`dead` int(11) DEFAULT NULL COMMENT '累计死亡',
+`import_case` int(11) DEFAULT NULL COMMENT '输入病例',
+`heal_rate` int(11) DEFAULT NULL COMMENT '康复率',
+`dead_rate` int(11) DEFAULT NULL COMMENT '死亡率',
+PRIMARY KEY(`ds`) USING BTREE
+)ENGINE=innoDB DEFAULT CHARSET=utf8mb4;
