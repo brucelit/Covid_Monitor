@@ -41,10 +41,16 @@ def get_c1_data():
     :return: 返回大屏div id=c1 的数据
     """
     # 因为会更新多次数据，取时间戳最新的那组数据
-    sql = "select confirm,suspect,heal,dead,heal_rate,dead_rate from history order by ds desc limit 1"
+    sql = "select confirm,import_case,heal,dead,suspect,heal_rate,dead_rate from history order by ds desc limit 1"
     res = query(sql)
     return res[0]
 
 
+def get_l1_data():
+    sql = "select ds,confirm,import_case,heal,dead from history"
+    res = query(sql)
+    return res
+
+
 if __name__ == "__main__":
-    print(get_c1_data())
+    print(get_l1_data())

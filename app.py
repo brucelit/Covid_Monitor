@@ -16,13 +16,24 @@ def hello_world():
 @app.route("/c1")
 def get_c1_data():
     data = utils.get_c1_data()
-    return jsonify({"confirm":data[0],"suspect":data[1],"heal":data[2],"dead":data[3],"heal_rate":data[4],"dead_rate":data[5]})
+    return jsonify({"confirm":data[0],"import_case":data[1],"heal":data[2],"dead":data[3],"suspect":data[4],"heal_rate":data[5],"dead_rate":data[6]})
 
 
 @app.route("/time")
 def get_time():
     return utils.get_time()
 
+@app.route("/l1")
+def get_l1_data():
+    data = utils.get_l1_data()
+    day,confirm,import_case,heal,dead = [],[],[],[],[]
+    for a,b,c,d,e in data[7:]:
+        day.append(a.strftime("%m-%d")) #a是datatime类型
+        confirm.append(b)
+        import_case.append(c)
+        heal.append(d)
+        dead.append(e)
+    return jsonify({"day":day,"confirm": confirm, "import_case": import_case, "heal": heal, "dead": dead})
 
 if __name__ == '__main__':
     app.run()
