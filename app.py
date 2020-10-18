@@ -35,5 +35,16 @@ def get_l1_data():
         dead.append(e)
     return jsonify({"day":day,"confirm": confirm, "import_case": import_case, "heal": heal, "dead": dead})
 
+@app.route("/r1")
+def get_r1_data():
+    data = utils.get_r1_data()
+    day, confirm_add, dead_add = [],[],[]
+    for a,b,c in data[5:]:
+        day.append(a.strftime("%m-%d")) #a是datatime类型
+        confirm_add.append(b)
+        dead_add.append(c)
+    return jsonify({"day": day, "confirm_add": confirm_add, "dead_add": dead_add})
+
+
 if __name__ == '__main__':
     app.run()

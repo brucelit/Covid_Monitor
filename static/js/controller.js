@@ -44,9 +44,26 @@ function get_l1_data() {
 		}
     })
 }
+
+function get_r1_data() {
+    $.ajax({
+        url:"/r1",
+        success: function(data) {
+			ec_right1_Option.xAxis[0].data=data.day
+            ec_right1_Option.series[0].data=data.confirm_add
+            ec_right1_Option.series[1].data=data.dead_add
+            ec_right1.setOption(ec_right1_Option)
+		},
+		error: function(xhr, type, errorThrown) {
+
+		}
+    })
+}
 gettime()
 get_c1_data()
 get_l1_data()
-setInterval(get_c1_data,1000)
+get_r1_data()
+setInterval(get_r1_data,100000)
+setInterval(get_c1_data,100000)
 setInterval(gettime,1000)
-setInterval(get_l1_data,1000)
+setInterval(get_l1_data,100000)

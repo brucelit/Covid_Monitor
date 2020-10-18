@@ -1,9 +1,9 @@
-var ec_left1 = echarts.init(document.getElementById('l1'), "dark");
+var ec_right1 = echarts.init(document.getElementById('r1'), "dark");
 
-var ec_left1_Option = {
+var ec_right1_Option = {
 	//标题样式
 	title: {
-		text: "疫情统计",
+		text: "疫情趋势",
 		textStyle: {
 			// color: 'white',
             fontSize:25,
@@ -22,7 +22,7 @@ var ec_left1_Option = {
 		},
 	},
 	legend: {
-		data: ['累计确诊', '累计输入', "累计治愈", "累计死亡"],
+		data: ['新增确诊', '新增死亡'],
 		left: "20",
         padding: [45, 10, 10, 10,
 ]
@@ -71,27 +71,16 @@ var ec_left1_Option = {
 		}
 	}],
 	series: [{
-		name: "累计确诊",
+		name: "新增确诊",
 		type: 'line',
 		smooth: true,
 		data: []
 	}, {
-		name: "累计输入",
-		type: 'line',
-		smooth: true,
-		data: []
-	},
-		{
-		name: "累计治愈",
-		type: 'line',
-		smooth: true,
-		data: []
-	}, {
-		name: "累计死亡",
+		name: "新增死亡",
 		type: 'line',
 		smooth: true,
 		data: []
 	}]
 };
 
-ec_left1.setOption(ec_left1_Option)
+ec_right1.setOption(ec_right1_Option)

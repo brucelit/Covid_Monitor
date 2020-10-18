@@ -51,6 +51,13 @@ def get_l1_data():
     res = query(sql)
     return res
 
+def get_r1_data():
+    sql = "select ds, confirm_add, confirm_dead from" \
+          "(select (confirm-LAG(confirm) over (order by ds)) as confirm_add,"\
+          "(dead-LAG(dead) over (order by ds)) as confirm_dead," \
+          "ds from history)t1 where confirm_add is not null"
+    res = query(sql)
+    return res
 
 if __name__ == "__main__":
-    print(get_l1_data())
+    print(get_r1_data())
